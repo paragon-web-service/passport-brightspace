@@ -1,0 +1,42 @@
+{
+  "name": "passport-brightspace",
+  "version": "0.1.0",
+  "description": "Brightspace authentication strategy for Passport.",
+  "scripts": {
+    "test": "nyc make test",
+    "coverage": "codecov"
+  },
+  "keywords": [
+    "passport",
+    "brightspace",
+    "auth",
+    "authn",
+    "authentication",
+    "identity"
+  ],
+  "author": {
+    "name": "Tiago Araújo",
+    "email": "tiago@feedbackfruits.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/feedbackfruits/passport-brightspace.git"
+  },
+  "bugs": {
+    "url": "http://github.com/feedbackfruits/passport-brightspace/issues"
+  },
+  "license": "MIT",
+  "main": "./lib",
+  "dependencies": {
+    "passport-oauth2": "1.x.x"
+  },
+  "devDependencies": {
+    "chai": "1.x.x",
+    "codecov": "^2.3.0",
+    "mocha": "1.x.x",
+    "nyc": "^11.2.1"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
