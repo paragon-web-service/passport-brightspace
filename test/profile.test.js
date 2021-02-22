@@ -19,7 +19,7 @@ describe('profile.parse', function() {
     });
 
     it('should parse profile', function() {
-      expect(profile.id).to.equal('1');
+      expect(profile.id).to.equal(1);
       expect(profile.displayName).to.equal('monalisa octocat');
     });
   });

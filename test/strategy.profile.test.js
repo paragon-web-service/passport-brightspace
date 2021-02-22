@@ -16,8 +16,8 @@ describe('Strategy#userProfile', function() {
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
       var testcases = {
-        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "ProfileIdentifier": "1", "Identifier": "1" }',
-        'https://api.brightspace.im/d2l/api/lp/1.26/users/1': '{ "DisplayName": "monalisa octocat" }'
+        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "Identifier": "1" }',
+        'https://api.brightspace.im/d2l/api/lp/1.26/users/1': '{ "UserId": 1, "DisplayName": "monalisa octocat" }'
       };
 
       var body = testcases[url] || null;
@@ -44,7 +44,7 @@ describe('Strategy#userProfile', function() {
     it('should parse profile', function() {
       expect(profile.provider).to.equal('brightspace');
 
-      expect(profile.id).to.equal('1');
+      expect(profile.id).to.equal(1);
       expect(profile.displayName).to.equal('monalisa octocat');
     });
 
