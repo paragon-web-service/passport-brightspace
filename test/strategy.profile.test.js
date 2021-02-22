@@ -16,7 +16,7 @@ describe('Strategy#userProfile', function() {
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
       var testcases = {
-        'https://api.brightspace.im/api/lp/1.19/profile/myProfile': '{ "login_id": "octocat", "id": 1, "name": "monalisa octocat" }'
+        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "ProfileIdentifier": "1", "Nickname": "monalisa octocat" }'
       };
 
       var body = testcases[url] || null;
@@ -44,7 +44,6 @@ describe('Strategy#userProfile', function() {
       expect(profile.provider).to.equal('brightspace');
 
       expect(profile.id).to.equal('1');
-      expect(profile.username).to.equal('octocat');
       expect(profile.displayName).to.equal('monalisa octocat');
     });
 

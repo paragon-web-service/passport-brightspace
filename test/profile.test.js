@@ -20,7 +20,6 @@ describe('profile.parse', function() {
 
     it('should parse profile', function() {
       expect(profile.id).to.equal('1');
-      expect(profile.username).to.equal('octocat');
       expect(profile.displayName).to.equal('monalisa octocat');
     });
   });
