@@ -28,6 +28,7 @@
   "license": "MIT",
   "main": "./lib",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "passport-oauth2": "1.x.x",
     "querystring": "^0.2.0"
   },

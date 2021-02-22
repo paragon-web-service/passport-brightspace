@@ -1,7 +1,8 @@
 /* global describe, it, expect, before */
 /* jshint expr: true */
 
-var BrightspaceStrategy = require('../lib/strategy');
+var BrightspaceStrategy = require('../lib/strategy')
+  , jwt = require('jsonwebtoken');
 
 
 describe('Strategy#userProfile', function() {
@@ -11,12 +12,12 @@ describe('Strategy#userProfile', function() {
       clientID: 'ABC123',
       clientSecret: 'secret'
     },
-    function() {});
+    function() {})
+    , token = jwt.sign({ sub: 1 }, 'secret');
 
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
       var testcases = {
-        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "Identifier": "1" }',
         'https://api.brightspace.im/d2l/api/lp/1.26/users/1': '{ "UserId": 1, "DisplayName": "monalisa octocat" }'
       };
 
@@ -25,7 +26,7 @@ describe('Strategy#userProfile', function() {
         return callback(new Error('wrong url argument'));
       }
 
-      if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
+      if (accessToken != token) { return callback(new Error('wrong token argument')); }
 
     callback(null, body, undefined);
   };
@@ -34,7 +35,7 @@ describe('Strategy#userProfile', function() {
     var profile;
 
     before(function(done) {
-      strategy.userProfile('token', function(err, p) {
+      strategy.userProfile(token, function(err, p) {
         if (err) { return done(err); }
         profile = p;
         done();
@@ -61,7 +62,7 @@ describe('Strategy#userProfile', function() {
     var err, profile;
 
     before(function(done) {
-      strategy.userProfile('wrong-token', function(e, p) {
+      strategy.userProfile(jwt.sign({ sub: 1 }, 'wrong secret'), function(e, p) {
         err = e;
         profile = p;
         done();
