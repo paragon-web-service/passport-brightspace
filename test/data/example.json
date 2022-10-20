@@ -1,4 +1,5 @@
 {
-  "UserId": 1,
-  "Nickname": "monalisa octocat"
+  "Identifier": "1",
+  "FirstName": "monalisa",
+  "LastName": "octocat"
 }
