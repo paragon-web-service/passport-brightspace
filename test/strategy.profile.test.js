@@ -16,8 +16,7 @@ describe('Strategy#userProfile', function() {
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
       var testcases = {
-        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "Identifier": "1" }',
-        'https://api.brightspace.im/d2l/api/lp/1.26/users/1': '{ "UserId": 1, "DisplayName": "monalisa octocat" }'
+        'https://api.brightspace.im/d2l/api/lp/1.26/users/whoami': '{ "UserId": 1, "Nickname": "monalisa octocat" }'
       };
 
       var body = testcases[url] || null;
